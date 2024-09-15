@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1c4f53a2-8d87-4e36-8c2b-40b7c88cf0b1",
+    "name": "Ana Silva",
+    "school_disciplines": "Matemática",
+    "contact": "ana.silva@escola.com",
+    "phone_number": "123456789",
+    "status": "on"
+  },
+  {
+    "id": "a0b5c1d7-fb3d-4a6c-9b8b-dc81b674c055",
+    "name": "Carlos Pereira",
+    "school_disciplines": "História",
+    "contact": "carlos.pereira@escola.com",
+    "phone_number": "987654321",
+    "status": "on"
+  },
+  {
+    "id": "b25d80e2-4d4a-4e60-9c34-63a5dbd05856",
+    "name": "Mariana Costa",
+    "school_disciplines": "Biologia",
+    "contact": "mariana.costa@escola.com",
+    "phone_number": "456123789",
+    "status": "on"
+  },
+  {
+    "id": "5d478b68-4d62-4a54-9cb7-039ef2d1c47a",
+    "name": "João Souza",
+    "school_disciplines": "Física",
+    "contact": "joao.souza@escola.com",
+    "phone_number": "321654987",
+    "status": "on"
+  },
+  {
+    "id": "ca0bfb80-18f8-4b6d-9b54-bb5a0e9d02b4",
+    "name": "Fernanda Lima",
+    "school_disciplines": "Química",
+    "contact": "fernanda.lima@escola.com",
+    "phone_number": "654987321",
+    "status": "on"
+  },
+  {
+    "id": "b4b6c0d4-71d7-4746-9530-2b63f2fc3e04",
+    "name": "Ricardo Alves",
+    "school_disciplines": "Geografia",
+    "contact": "ricardo.alves@escola.com",
+    "phone_number": "789123456",
+    "status": "on"
+  },
+  {
+    "id": "a9b6d5d2-d1f7-43ee-9884-1b872f5d5962",
+    "name": "Patrícia Mendes",
+    "school_disciplines": "Português",
+    "contact": "patricia.mendes@escola.com",
+    "phone_number": "987321654",
+    "status": "on"
+  },
+  {
+    "id": "b70522b4-82d6-4c4d-8d97-f72c0cfb4732",
+    "name": "Gustavo Rocha",
+    "school_disciplines": "Educação Física",
+    "contact": "gustavo.rocha@escola.com",
+    "phone_number": "123789456",
+    "status": "on"
+  },
+  {
+    "id": "67b4e6e3-3b0d-46a1-95a5-df6d185b3d4b",
+    "name": "Juliana Martins",
+    "school_disciplines": "Artes",
+    "contact": "juliana.martins@escola.com",
+    "phone_number": "456987123",
+    "status": "on"
+  },
+  {
+    "id": "4c9c7b60-68a5-4d5f-b07d-b44d6a5c6fa0",
+    "name": "Felipe Oliveira",
+    "school_disciplines": "Inglês",
+    "contact": "felipe.oliveira@escola.com",
+    "phone_number": "321987654",
+    "status": "on"
+  }
+]
