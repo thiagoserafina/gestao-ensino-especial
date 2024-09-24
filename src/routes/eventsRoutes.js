@@ -35,8 +35,13 @@ router.get("/name/:name", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const event = req.body;
-  event.id = uuidv4();
+  const { description, comments, date } = req.body;
+  const event = {
+    id: uuidv4(),
+    description,
+    comments,
+    date,
+  };
   eventsDB.push(event);
 
   const filePath = path.join(__dirname, "../db/events.json");
@@ -54,12 +59,22 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const id = req.params.id;
-  const event = req.body;
+  const { description, comments, date } = req.body;
   const index = eventsDB.findIndex((event) => event.id === id);
-  if (index < 0)
+
+  if (index < 0) {
     return res.status(404).json({
       erro: "Evento não encontrado!",
     });
+  }
+
+  const event = {
+    id,
+    description,
+    comments,
+    date,
+  };
+
   eventsDB[index] = event;
 
   const filePath = path.join(__dirname, "../db/events.json");
