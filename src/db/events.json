@@ -1,0 +1,74 @@
+[
+    {
+      "id": "a7f1238c8f7b29e6d7f89acdb24e731fbab46710",
+      "description": "Oficina de Desenho e Expressão",
+      "comments": "Atividade de artes para estimular a criatividade dos alunos.",
+      "date": "2023-08-22 14:30:00"
+    },
+    {
+      "id": "b9e8231f8d3b42c7a48fc5a1e91bfc32d7b9a502",
+      "description": "Aula de Música e Ritmo",
+      "comments": "Explorando instrumentos simples para desenvolver o senso de ritmo.",
+      "date": "2023-09-05 10:00:00"
+    },
+    {
+      "id": "c7f456d2a7b83429c9e73629b8d73f4cbad678f3",
+      "description": "Sessão de Leitura Interativa",
+      "comments": "Leitura de histórias com a participação ativa dos alunos.",
+      "date": "2023-09-12 11:00:00"
+    },
+    {
+      "id": "d8a132f9b4c3f872e5d92f6cba8f239b3e6a9123",
+      "description": "Aula de Jardinagem Inclusiva",
+      "comments": "Alunos aprendem a cuidar de plantas no jardim da escola.",
+      "date": "2023-09-18 15:00:00"
+    },
+    {
+      "id": "e9d8b23fa4b2c891c5f43f7a7d8c41b9b7c6d2a1",
+      "description": "Sessão de Jogos Cooperativos",
+      "comments": "Atividades lúdicas para promover o trabalho em equipe.",
+      "date": "2023-09-20 13:00:00"
+    },
+    {
+      "id": "f1a2b83da3b9d72e7c7a8d1c934b162d7e4f8395",
+      "description": "Aula de Pintura e Colagem",
+      "comments": "Estimulação sensorial e desenvolvimento de habilidades motoras.",
+      "date": "2023-09-22 09:30:00"
+    },
+    {
+      "id": "g2f74d9a8b4c53e2a7f8b1e7f2c7d92b8d4e7362",
+      "description": "Atividade de Culinária Básica",
+      "comments": "Alunos aprendem receitas simples, promovendo a independência.",
+      "date": "2023-09-25 16:00:00"
+    },
+    {
+      "id": "h3c23f7d9a7b2e8a4f3c4a1d6b7e9f5c7d2b6839",
+      "description": "Oficina de Reciclagem Criativa",
+      "comments": "Transformando materiais recicláveis em brinquedos e arte.",
+      "date": "2023-09-28 14:00:00"
+    },
+    {
+      "id": "i4d35f7e3c2a91e8b6f7a9d1b9f4a3b9d7e5b2f4",
+      "description": "Aula de Teatro de Fantoches",
+      "comments": "Expressão e criatividade através da manipulação de fantoches.",
+      "date": "2023-09-30 10:30:00"
+    },
+    {
+      "id": "j5f87a9c6b8d2e1a7f3b5c4a9d2e3c7f9b5a1d6e",
+      "description": "Sessão de Relaxamento e Yoga",
+      "comments": "Exercícios simples de alongamento e respiração para relaxar.",
+      "date": "2023-10-02 09:00:00"
+    },
+    {
+      "id": "k6f97b2c4d3a92f7b6e3d8a4c7d1f9e5a4b6c2e3",
+      "description": "Atividade de Contação de Histórias",
+      "comments": "Histórias interativas para estimular a imaginação dos alunos.",
+      "date": "2023-10-05 15:30:00"
+    },
+    {
+      "id": "l7d38f6e4a5c81e7b9c4a3d8e2b5a9d7c2b4f7e8",
+      "description": "Aula de Movimentos e Dança",
+      "comments": "Incentivando o movimento e a coordenação motora através da dança.",
+      "date": "2023-10-07 11:30:00"
+    }
+] 

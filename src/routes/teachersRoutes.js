@@ -22,7 +22,18 @@ router.get("/:id", (req, res) => {
   res.json(teacher);
 });
 
-// Faltou a rota de busca por nome
+router.get("/name/:name", (req, res) => {
+  const name = req.params.name;
+  const teacher = teacherDB.filter((teacher) => teacher.name === name);
+
+  if (!teacher) {
+    return res.status(404).json({
+      erro: "Nenhum(a) professor(a) encontrado(a) com esse nome",
+    });
+  }
+
+  res.json(teacher);
+});
 
 router.post("/", (req, res) => {
   const teacher = req.body;

@@ -4,11 +4,13 @@ const router = express.Router();
 const exemploRoutes = require("./exemploRoutes");
 const teacherRoutes = require("./teachersRoutes");
 const appointmentsRoutes = require("./appointmentsRoutes");
+const eventsRoutes = require("./eventsRoutes");
 
 router.use(express.json());
 // Adicionar aqui as rotas conforme o exemplo abaixo
 router.use("/exemplo", exemploRoutes);
 router.use("/teachers", teacherRoutes);
 router.use("/appointments", appointmentsRoutes);
+router.use("/events", eventsRoutes);
 
 module.exports = router;
