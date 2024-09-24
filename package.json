@@ -10,7 +10,10 @@
   "author": "Query Masters",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.20.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "uuid": "^10.0.0"
   }
 }
