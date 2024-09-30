@@ -117,7 +117,7 @@ const usersDB = require("../db/users.json");
  * @swagger
  * tags:
  *   name: Users
- *   description: API para cadastro de usuários
+ *   description: API para cadastro de usuários por **Claudia Trescher**
  */
 
 /**

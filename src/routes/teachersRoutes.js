@@ -103,7 +103,7 @@ const teacherDB = require("../db/teachers.json");
  * @swagger
  * tags:
  *   name: Teachers
- *   description: API de casdastro de professores *Por Estefani de Souza*
+ *   description: API de cadastro de professores **Por Estefani de Souza**
  */
 
 /**
