@@ -100,7 +100,6 @@ function saveStudents() {
 
 // GET "/students"
 router.get("/", (req, res) => {
-  console.log("getroute");
   studentsDB = loadStudents();
   res.json(studentsDB);
 });

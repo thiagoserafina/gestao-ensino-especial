@@ -100,7 +100,6 @@ function saveProfessionals() {
 
 // GET "/professionals"
 router.get("/", (req, res) => {
-  console.log("getroute");
   ProfessionalsDB = loadProfessionals();
   res.json(ProfessionalsDB);
 });
