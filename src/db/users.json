@@ -1,0 +1,65 @@
+[
+  {
+    "id": "7fbe00ae-69b6-4c7b-b45e-bc52f3cc4f69",
+    "name": "Andre Faria Ruaro",
+    "email": "andre.ruaro@unesc.net",
+    "username": "andre.ruaro",
+    "pwd": "7a6cc1282c5f6ec0235acd2bfa780145aaskem5n",
+    "level": "admin",
+    "status": "on"
+  },
+  {
+    "id": "1c82fbe0-d2fa-4e39-b54f-b6331a3c1b51",
+    "name": "Claudia Trescher",
+    "email": "claudiatrescher@unesc.net",
+    "username": "claudia.trescher",
+    "pwd": "7a6cc1282c5f6ec0235acd2bfa780145aaskem5n",
+    "level": "admin",
+    "status": "on"
+  },
+  {
+    "id": "4d3be750-446e-4c45-91d1-73bcf908afe4",
+    "name": "Ricardo Almeida",
+    "email": "ricardoalmeida@unesc.net",
+    "username": "ricardo.almeida",
+    "pwd": "9c8cc1282c5f6ec0235acd3bfa780145clzfm3p",
+    "level": "editor",
+    "status": "off"
+  },
+  {
+    "id": "f3e633b1-04b5-4f24-97f3-565024de930b",
+    "name": "Sofia Nascimento",
+    "email": "sofianascimento@unesc.net",
+    "username": "sofia.nascimento",
+    "pwd": "6f2cc1282c5f6ec0235acd6bfa780145zqlpm8j",
+    "level": "admin",
+    "status": "on"
+  },
+  {
+    "id": "254f1c65-bff9-4d72-927b-cf7d4cf1b005",
+    "name": "Camila Duarte",
+    "email": "camilasantos@unesc.net",
+    "username": "camila.santos",
+    "pwd": "1e3cc1282c5f6ec0235acd0bfa780145hykhg2l",
+    "level": "editor",
+    "status": "off"
+  },
+  {
+    "id": "e261f171-bf61-4e49-9ca6-f12552b66c3b",
+    "name": "Silvio Junior",
+    "email": "silvio@gmail.com",
+    "username": "silvio.jr",
+    "pwd": "silvio123",
+    "level": "admin",
+    "status": "on"
+  },
+  {
+    "id": "5b3462cc-cf79-4472-b409-657141177724",
+    "name": "Thiago Serafina",
+    "email": "thiago@gmail.com",
+    "username": "thiagoserafina",
+    "pwd": "thiago123",
+    "level": "user",
+    "status": "on"
+  }
+]
