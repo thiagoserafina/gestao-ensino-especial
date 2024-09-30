@@ -20,8 +20,8 @@ const options = {
       version: "1.0.0",
       description: `API para demonstração de Documentação API via Swagger.  
             ### TD 01    
-            Disciplina: DAII 2024.02 Turma 01  
-            Equipe: Cláudia, Estefani, Gabriel, Gabrielle e Thiago   
+            Disciplina: DAII 2024.02 Turma 02  
+            Equipe: Claudia, Estefani, Gabriel, Gabrielle e Thiago   
 			`,
       license: {
         name: "Licenciado para DAII",
