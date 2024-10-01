@@ -8,7 +8,7 @@ var ProfessionalsDB = loadProfessionals();
 // Função carrega profissionais a partir do arquivo JSON
 function loadProfessionals() {
   try {
-    return JSON.parse(fs.readFileSync("./src/db/Professionals.json", "utf8"));
+    return JSON.parse(fs.readFileSync("./src/db/professionals.json", "utf8"));
   } catch (err) {
     return [];
   }
@@ -120,7 +120,7 @@ router.get("/", (req, res) => {
  *     responses:
  *       200:
  *         description: Um profissional pelo ID
- *         contens:
+ *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Professional'

@@ -34,14 +34,5 @@
     "contato": "vi.medico@gmail",
     "número_de_telefone": "48 7264 5148",
     "status": "on"
-  },
-  {
-    "id": "059c5625-7dbd-4893-9164-33d115c6c1a6",
-    "nome": "Emily Duarte",
-    "idade": 43,
-    "especialidade": "Pscicóloga",
-    "contato": "wb.pscico@gmail",
-    "número_de_telefone": "48 7264 5148",
-    "status": "on"
   }
 ]
