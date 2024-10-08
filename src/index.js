@@ -58,4 +58,5 @@ app.use(function (req, res, next) {
 
 app.listen(port, function () {
   console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Swagger running at http://${hostname}:${port}/docs`);
 });

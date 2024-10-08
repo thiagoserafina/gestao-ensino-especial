@@ -2,18 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
+const ProfessionalsDB = require("../db/professionals.json");
 
-var ProfessionalsDB = loadProfessionals();
-
-// Função carrega profissionais a partir do arquivo JSON
-function loadProfessionals() {
-  try {
-    return JSON.parse(fs.readFileSync("./src/db/professionals.json", "utf8"));
-  } catch (err) {
-    return [];
-  }
-}
-// Função para salvar os profissionais no arquivo JSON
 function saveProfessionals() {
   try {
     fs.writeFileSync(
@@ -30,33 +20,33 @@ function saveProfessionals() {
  * @swagger
  * components:
  *   schemas:
- *     Professional:
+ *     ProfessionalResponse:
  *      type: object
  *      required:
  *        - id
- *        - nome
- *        - idade
- *        - especialidade
- *        - contato
- *        - número_de_telefone
+ *        - name
+ *        - age
+ *        - specialty
+ *        - contact
+ *        - phone_number
  *        - status
  *      properties:
  *        id:
  *          type: string
  *          description: O id é gerado automaticamente pelo cadastro do Profissional
- *        nome:
+ *        name:
  *          type: string
  *          description: Nome do Profissional
- *        idade:
+ *        age:
  *          type: int
  *          description: Idade do Profissional
- *        especialidade:
+ *        specialty:
  *         type: string
  *         description: Especialidade do Profissional
- *        contato:
+ *        contact:
  *         type: int
  *         description: Contato do Profissional
- *        número_de_telefone:
+ *        phone_number:
  *         type: string
  *         description: Número de Telefone do Profissional
  *        status:
@@ -64,11 +54,83 @@ function saveProfessionals() {
  *         description: Status do Profissional
  *      example:
  *        id: 059c5625-7dbd-4893-9164-33d115c6c1a6
- *        nome: Emily Duarte
- *        idade: 43
- *        especialidade: Psicóloga
- *        contato: wb.psico@gmail.com
- *        número_de_telefone: 48 7264 5148
+ *        name: Emily Duarte
+ *        age: 43
+ *        specialty: Psicóloga
+ *        contact: wb.psico@gmail.com
+ *        phone_number: 48 7264 5148
+ *        status: on
+ *     ProfessionalCreate:
+ *      type: object
+ *      required:
+ *        - name
+ *        - age
+ *        - specialty
+ *        - contact
+ *        - phone_number
+ *        - status
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: Nome do Profissional
+ *        age:
+ *          type: int
+ *          description: Idade do Profissional
+ *        specialty:
+ *         type: string
+ *         description: Especialidade do Profissional
+ *        contact:
+ *         type: int
+ *         description: Contato do Profissional
+ *        phone_number:
+ *         type: string
+ *         description: Número de Telefone do Profissional
+ *        status:
+ *         type: string
+ *         description: Status do Profissional
+ *      example:
+ *        id: 059c5625-7dbd-4893-9164-33d115c6c1a6
+ *        name: Emily Duarte
+ *        age: 43
+ *        specialty: Psicóloga
+ *        contact: wb.psico@gmail.com
+ *        phone_number: 48 7264 5148
+ *        status: on
+ *     ProfessionalUpdate:
+ *      type: object
+ *      required:
+ *        - name
+ *        - age
+ *        - specialty
+ *        - contact
+ *        - phone_number
+ *        - status
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: Nome do Profissional
+ *        age:
+ *          type: int
+ *          description: Idade do Profissional
+ *        specialty:
+ *         type: string
+ *         description: Especialidade do Profissional
+ *        contact:
+ *         type: int
+ *         description: Contato do Profissional
+ *        phone_number:
+ *         type: string
+ *         description: Número de Telefone do Profissional
+ *        status:
+ *         type: string
+ *         description: Status do Profissional
+ *      example:
+ *        id: 059c5625-7dbd-4893-9164-33d115c6c1a6
+ *        name: Emily Duarte
+ *        age: 43
+ *        specialty: Psicóloga
+ *        contact: wb.psico@gmail.com
+ *        phone_number: 48 7264 5148
  *        status: on
  */
 
@@ -78,7 +140,7 @@ function saveProfessionals() {
  *   name: Professionals
  *   description:
  *     API de Controle de profissionais
- *     **Por Gabriel Goulart de Souza**
+ *     *Por Gabriel Goulart de Souza*
  */
 
 /**
@@ -95,12 +157,10 @@ function saveProfessionals() {
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Professional'
+ *                 $ref: '#/components/schemas/ProfessionalResponse'
  */
 
-// GET "/professionals"
 router.get("/", (req, res) => {
-  ProfessionalsDB = loadProfessionals();
   res.json(ProfessionalsDB);
 });
 
@@ -123,23 +183,62 @@ router.get("/", (req, res) => {
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Professional'
+ *               $ref: '#/components/schemas/ProfessionalResponse'
  *       404:
- *         description: profissional não encontrado
+ *         description: Profissional não encontrado
  */
 
-// GET "/professionals/1"
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  ProfessionalsDB = loadProfessionals();
   var Professional = ProfessionalsDB.find(
     (Professional) => Professional.id === id
   );
   if (!Professional)
     return res.status(404).json({
-      erro: "Aluno não encontrado!",
+      erro: "Profissional não encontrado!",
     });
   res.json(Professional);
+});
+
+/**
+ * @swagger
+ * /professionals/name/{name}:
+ *   get:
+ *     summary: Retorna o profissional por nome
+ *     tags: [Professionals]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Nome do profissional
+ *     responses:
+ *       200:
+ *         description: profissional encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ProfessionalResponse'
+ *       404:
+ *         description: Profissional não encontrado
+ */
+
+router.get("/name/:name", (req, res) => {
+  const name = req.params.name;
+  const professional = ProfessionalsDB.filter(
+    (professional) => professional.name === name
+  );
+
+  if (!professional) {
+    return res.status(404).json({
+      erro: "Nenhum profissional encontrado com esse nome",
+    });
+  }
+
+  res.json(professional);
 });
 
 /**
@@ -153,23 +252,21 @@ router.get("/:id", (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Professional'
+ *             $ref: '#/components/schemas/ProfessionalCreate'
  *     responses:
  *       200:
  *         description: O profissional foi criado com sucesso
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Professional'
+ *               $ref: '#/components/schemas/ProfessionalResponse'
  */
 
-// POST "/professionals" BODY { "nome": "Eragon"}
 router.post("/", (req, res) => {
   const newProfessional = {
     id: uuidv4(),
     ...req.body,
   };
-  ProfessionalsDB = loadProfessionals();
   ProfessionalsDB.push(newProfessional);
   let result = saveProfessionals();
   console.log(result);
@@ -194,23 +291,21 @@ router.post("/", (req, res) => {
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/Professional'
+ *            $ref: '#/components/schemas/ProfessionalUpdate'
  *    responses:
  *      200:
  *        description: O profissional foi atualizado com sucesso
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Professional'
+ *              $ref: '#/components/schemas/ProfessionalResponse'
  *      404:
  *        description: profissional não encontrado
  */
 
-// PUT "/professionals/1" BODY { "nome": "Eragon"}
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   const newProfessional = req.body;
-  ProfessionalsDB = loadProfessionals();
   const currentProfessional = ProfessionalsDB.find(
     (Professional) => Professional.id === id
   );
@@ -246,15 +341,13 @@ router.put("/:id", (req, res) => {
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Professional'
+ *              $ref: '#/components/schemas/ProfessionalResponse'
  *       404:
  *         description: profissional não encontrado
  */
 
-// DELETE "/professionals/1"
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-  ProfessionalsDB = loadProfessionals();
   const currentProfessional = ProfessionalsDB.find(
     (Professional) => Professional.id === id
   );

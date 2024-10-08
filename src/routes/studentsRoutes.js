@@ -2,18 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
+const studentsDB = require("../db/students.json");
 
-var studentsDB = loadStudents();
-
-// Função carrega estudantes a partir do arquivo JSON
-function loadStudents() {
-  try {
-    return JSON.parse(fs.readFileSync("./src/db/students.json", "utf8"));
-  } catch (err) {
-    return [];
-  }
-}
-// Função para salvar os estudantes no arquivo JSON
 function saveStudents() {
   try {
     fs.writeFileSync(
@@ -30,33 +20,33 @@ function saveStudents() {
  * @swagger
  * components:
  *   schemas:
- *     Student:
+ *     StudentResponse:
  *      type: object
  *      required:
  *        - id
- *        - nome
- *        - idade
- *        - parentes
- *        - numero_de_telefone
- *        - necessidades_especiais
+ *        - name
+ *        - age
+ *        - kin
+ *        - phone_number
+ *        - special_needs
  *        - status
  *      properties:
  *        id:
  *          type: string
  *          description: O id é gerado automaticamente pelo cadastro do Estudante
- *        nome:
+ *        name:
  *          type: string
  *          description: Nome do Estudante
- *        idade:
+ *        age:
  *          type: int
  *          description: Idade do Estudante
- *        parentes:
+ *        kin:
  *         type: string
  *         description: Parentes do Estudante
- *        numero_de_telefone:
+ *        phone_number:
  *         type: int
  *         description: Número de Telefone do Estudante
- *        necessidades_especiais:
+ *        special_needs:
  *         type: string
  *         description: Necessidades Especiais do Estudante
  *        status:
@@ -64,11 +54,83 @@ function saveStudents() {
  *         description: Status do Estudante
  *      example:
  *        id: d7285041-3a09-4a71-8d0e-3070763d3d00
- *        nome: Emily Goulart
- *        idade: 43
- *        parentes: Leandro Goulart e Carol Goulart
- *        numero_de_telefone: 48 9696 5858
- *        necessidades_especiais: Síndrome de down
+ *        name: Emily Goulart
+ *        age: 43
+ *        kin: Leandro Goulart e Carol Goulart
+ *        phone_number: 48 9696 5858
+ *        special_needs: Síndrome de down
+ *        status: on
+ *     StudentCreate:
+ *      type: object
+ *      required:
+ *        - name
+ *        - age
+ *        - kin
+ *        - phone_number
+ *        - special_needs
+ *        - status
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: Nome do Estudante
+ *        age:
+ *          type: int
+ *          description: Idade do Estudante
+ *        kin:
+ *         type: string
+ *         description: Parentes do Estudante
+ *        phone_number:
+ *         type: int
+ *         description: Número de Telefone do Estudante
+ *        special_needs:
+ *         type: string
+ *         description: Necessidades Especiais do Estudante
+ *        status:
+ *         type: string
+ *         description: Status do Estudante
+ *      example:
+ *        id: d7285041-3a09-4a71-8d0e-3070763d3d00
+ *        name: Emily Goulart
+ *        age: 43
+ *        kin: Leandro Goulart e Carol Goulart
+ *        phone_number: 48 9696 5858
+ *        special_needs: Síndrome de down
+ *        status: on
+ *     StudentUpdate:
+ *      type: object
+ *      required:
+ *        - name
+ *        - age
+ *        - kin
+ *        - phone_number
+ *        - special_needs
+ *        - status
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: Nome do Estudante
+ *        age:
+ *          type: int
+ *          description: Idade do Estudante
+ *        kin:
+ *         type: string
+ *         description: Parentes do Estudante
+ *        phone_number:
+ *         type: int
+ *         description: Número de Telefone do Estudante
+ *        special_needs:
+ *         type: string
+ *         description: Necessidades Especiais do Estudante
+ *        status:
+ *         type: string
+ *         description: Status do Estudante
+ *      example:
+ *        id: d7285041-3a09-4a71-8d0e-3070763d3d00
+ *        name: Emily Goulart
+ *        age: 43
+ *        kin: Leandro Goulart e Carol Goulart
+ *        phone_number: 48 9696 5858
+ *        special_needs: Síndrome de down
  *        status: on
  */
 
@@ -95,12 +157,10 @@ function saveStudents() {
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Student'
+ *                 $ref: '#/components/schemas/StudentResponse'
  */
 
-// GET "/students"
 router.get("/", (req, res) => {
-  studentsDB = loadStudents();
   res.json(studentsDB);
 });
 
@@ -120,23 +180,60 @@ router.get("/", (req, res) => {
  *     responses:
  *       200:
  *         description: Um estudante pelo ID
- *         contens:
+ *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Student'
+ *               $ref: '#/components/schemas/StudentResponse'
  *       404:
  *         description: Estudante não encontrado
  */
 
-// GET "/students/1"
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  studentsDB = loadStudents();
   var student = studentsDB.find((student) => student.id === id);
   if (!student)
     return res.status(404).json({
       erro: "Aluno não encontrado!",
     });
+  res.json(student);
+});
+
+/**
+ * @swagger
+ * /students/name/{name}:
+ *   get:
+ *     summary: Retorna o aluno por nome
+ *     tags: [Students]
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Nome do aluno
+ *     responses:
+ *       200:
+ *         description: Aluno encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/StudentResponse'
+ *       404:
+ *         description: Aluno não encontrado
+ */
+
+router.get("/name/:name", (req, res) => {
+  const name = req.params.name;
+  var student = studentsDB.filter((student) => student.name === name);
+
+  if (!student) {
+    return res.status(404).json({
+      erro: "Nenhum aluno encontrado com esse nome",
+    });
+  }
+
   res.json(student);
 });
 
@@ -151,24 +248,22 @@ router.get("/:id", (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Student'
+ *             $ref: '#/components/schemas/StudentCreate'
  *     responses:
  *       200:
  *         description: O estudante foi criado com sucesso
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Student'
+ *               $ref: '#/components/schemas/StudentResponse'
  */
 
-// POST "/students" BODY { "nome": "Eragon"}
 router.post("/", (req, res) => {
   const newStudent = {
     id: uuidv4(),
     ...req.body,
   };
   console.log(newStudent);
-  studentsDB = loadStudents();
   studentsDB.push(newStudent);
   let result = saveStudents();
   console.log(result);
@@ -193,23 +288,21 @@ router.post("/", (req, res) => {
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/Student'
+ *            $ref: '#/components/schemas/StudentUpdate'
  *    responses:
  *      200:
  *        description: O estudante foi atualizado com sucesso
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Student'
+ *              $ref: '#/components/schemas/StudentResponse'
  *      404:
  *        description: Estudante não encontrado
  */
 
-// PUT "/students/1" BODY { "nome": "Eragon"}
 router.put("/:id", (req, res) => {
   const id = req.params.id;
   const newStudent = req.body;
-  studentsDB = loadStudents();
   const currentStudent = studentsDB.find((student) => student.id === id);
   const currentIndex = studentsDB.findIndex((student) => student.id === id);
   if (!currentStudent)
@@ -241,15 +334,13 @@ router.put("/:id", (req, res) => {
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Student'
+ *              $ref: '#/components/schemas/StudentResponse'
  *       404:
  *         description: Estudante não encontrado
  */
 
-// DELETE "/students/1"
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-  studentsDB = loadStudents();
   const currentStudent = studentsDB.find((student) => student.id === id);
   const currentIndex = studentsDB.findIndex((student) => student.id === id);
   if (!currentStudent)

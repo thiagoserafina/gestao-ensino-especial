@@ -201,6 +201,46 @@ router.get("/date/:date", (req, res) => {
 
 /**
  * @swagger
+ * /appointments/specialty/{specialty}:
+ *   get:
+ *     summary: Retorna agendamentos por nome da especialidade
+ *     tags: [Appointments]
+ *     parameters:
+ *       - in: path
+ *         name: specialty
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Nome da especialidade
+ *     responses:
+ *       200:
+ *         description: Agendamentos encontrados
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/AppointmentResponse'
+ *       404:
+ *         description: Agendamento não encontrado
+ */
+router.get("/specialty/:specialty", (req, res) => {
+  const specialty = req.params.specialty;
+  const appointment = appointmentsDB.filter(
+    (appointment) => appointment.specialty === specialty
+  );
+
+  if (!appointment) {
+    return res.status(404).json({
+      erro: "Nenhum agendamento encontrado com esse nome",
+    });
+  }
+
+  res.json(appointment);
+});
+
+/**
+ * @swagger
  * /appointments:
  *   post:
  *     summary: Cria um novo agendamento

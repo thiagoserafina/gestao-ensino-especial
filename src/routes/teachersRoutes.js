@@ -30,13 +30,13 @@ const teacherDB = require("../db/teachers.json");
  *         status:
  *           type: string
  *           description: Se está trabalhando ou não na empresa
- *         example:
- *           id: 1c4f53a2-8d87-4e36-8c2b-40b7c88cf0b1
- *           name: Ana Silva
- *           school_disciplines: Matemática
- *           contact: ana.silva@escola.com
- *           phone_number: 123456789
- *           status: on
+ *       example:
+ *         id: 1c4f53a2-8d87-4e36-8c2b-40b7c88cf0b1
+ *         name: Ana Silva
+ *         school_disciplines: Matemática
+ *         contact: ana.silva@escola.com
+ *         phone_number: 123456789
+ *         status: on
  *     TeachersCreate:
  *       type: object
  *       required:
@@ -61,12 +61,12 @@ const teacherDB = require("../db/teachers.json");
  *         status:
  *           type: string
  *           description: Se trabalha ou não na empresa
- *         example:
- *           name: Carlos Pereira
- *           school_disciplines: História
- *           contact: carlos.pereira@escola.com
- *           phone_number: 987654321
- *           status: on
+ *       example:
+ *         name: Carlos Pereira
+ *         school_disciplines: História
+ *         contact: carlos.pereira@escola.com
+ *         phone_number: 987654321
+ *         status: on
  *     TeachersUpdate:
  *       type: object
  *       required:
@@ -91,12 +91,12 @@ const teacherDB = require("../db/teachers.json");
  *         status:
  *           type: string
  *           description: Se trabalha ou não na empresa
- *         example:
- *           name: Mariana Costa
- *           school_disciplines: Biologia
- *           contact: mariana.costa@escola.com
- *           phone_number: 456123789
- *           status: on
+ *       example:
+ *         name: Mariana Costa
+ *         school_disciplines: Biologia
+ *         contact: mariana.costa@escola.com
+ *         phone_number: 456123789
+ *         status: on
  */
 
 /**
